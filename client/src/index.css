@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.typed-cursor {
+  opacity: 1;
+  color: #2563eb; /* blue-600 */
+  font-weight: 500;
+  animation: typedjsBlink 0.7s infinite;
+}
+
+@keyframes typedjsBlink {
+  50% { opacity: 0.0; }
+}
