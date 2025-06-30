@@ -239,7 +239,7 @@ const MobileMenu = ({ isOpen }) => (
   <motion.ul
     className={`md:hidden ${
       isOpen ? "block" : "hidden"
-    } absolute top-16 left-0 right-0 bg-gray-900 w-full px-4 py-2 z-50 shadow-lg`}
+    }  top-16 left-0 right-0 bg-gray-900 w-full px-4 py-2 z-50 shadow-lg sticky`}
     initial={{ height: 0, opacity: 0 }}
     animate={
       isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }
@@ -393,10 +393,10 @@ const HeroSection = ({ currentRoleIndex }) => (
         </motion.h1>
         <motion.div
           variants={ANIMATION_VARIANTS.item}
-          className="text-xl md:text-3xl text-gray-300 min-h-[1.5em] flex justify-center items-center gap-2 font-medium"
+          className="text-xl md:text-3xl text-gray-300 min-h-[1.5em] flex flex-col sm:flex-row justify-center items-center gap-2 font-medium"
         >
           <h3>I'm a</h3>
-          <div className="min-w-[200px] text-left">
+          <div className="min-w-[200px] text-center sm:text-left">
             <RoleDisplay currentRoleIndex={currentRoleIndex} />
           </div>
         </motion.div>
