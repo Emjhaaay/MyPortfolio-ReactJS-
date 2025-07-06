@@ -32,6 +32,47 @@ import {
 
 import ParticlesBackground from "./components/ParticlesBackground";
 
+// Preloader component
+const Preloader = ({ setIsLoading }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000); // 3 seconds loading time
+
+    return () => clearTimeout(timer);
+  }, [setIsLoading]);
+
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black">
+      <div className="relative w-32 h-32">
+        <motion.div
+          className="absolute inset-0 border-4 border-transparent border-t-blue-500 border-r-blue-500 rounded-full"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+        />
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.img
+            src={LOGO1NOBG}
+            alt="Loading"
+            className="w-16 h-16"
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.5, repeat: Infinity, repeatType: "reverse" }}
+          />
+        </div>
+        <motion.div
+          className="absolute -bottom-8 left-0 right-0 text-center text-white font-medium"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.5 }}
+        >
+          Loading...
+        </motion.div>
+      </div>
+    </div>
+  );
+};
+
 // Constants
 const ROLES = ["Programmer", "Web Developer", "Front-End Developer"];
 const NAV_ITEMS = ["Home", "About", "Skills", "Projects", "Contact"];
@@ -1034,7 +1075,6 @@ const ContactSection = () => {
   );
 };
 
-// Add this Footer component before the App function
 const Footer = () => (
   <footer className="py-12 px-4 md:px-8 relative overflow-hidden bg-black">
     <div className="max-w-6xl mx-auto relative z-10">
@@ -1074,10 +1114,10 @@ const Footer = () => (
   </footer>
 );
 
-// Then update the App function to include the Footer component
 function App() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -1091,15 +1131,21 @@ function App() {
 
   return (
     <div className="bg-black min-h-screen text-white">
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
-      <MobileMenu isOpen={isOpen} />
-      <HeroSection currentRoleIndex={currentRoleIndex} />
-      <AboutSection />
-      <SkillsSection />
-      <GitHubContributions />
-      <ProjectsSection />
-      <ContactSection />
-      <Footer />
+      {isLoading ? (
+        <Preloader setIsLoading={setIsLoading} />
+      ) : (
+        <>
+          <Header isOpen={isOpen} setIsOpen={setIsOpen} />
+          <MobileMenu isOpen={isOpen} />
+          <HeroSection currentRoleIndex={currentRoleIndex} />
+          <AboutSection />
+          <SkillsSection />
+          <GitHubContributions />
+          <ProjectsSection />
+          <ContactSection />
+          <Footer />
+        </>
+      )}
     </div>
   );
 }
