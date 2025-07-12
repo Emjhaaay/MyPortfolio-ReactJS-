@@ -708,58 +708,7 @@ const SkillsSection = () => (
     </div>
   </section>
 );
-const GitHubContributions = () => {
-  return (
-    <section className="py-20 px-4 md:px-8 relative overflow-hidden bg-gradient-to-b from-black to-gray-900">
-      <div className="max-w-6xl mx-auto">
-        <motion.div
-          className="text-center mb-8"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-3 text-white">
-            My <span className="text-transparent bg-clip-text bg-gradient-to-r from-gray-300 to-gray-500">GitHub</span> Contributions
-          </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            My coding activity and contributions over the past year
-          </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-gray-500 to-gray-700 mx-auto mt-4"></div>
-        </motion.div>
 
-        <motion.div
-          className="bg-gray-800/50 rounded-xl p-6 border border-gray-700"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true, margin: "-100px" }}
-        >
-          <div className="flex flex-col items-center">
-            {/* GitHub Contribution Chart - Using an image as placeholder */}
-            <img 
-              src={`https://ghchart.rshah.org/Emjhaaay`}
-              alt="GitHub Contributions Chart"
-              className="w-full max-w-4xl h-auto rounded-lg"
-            />
-            
-            <motion.a
-              href="https://github.com/Emjhaaay"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-6 flex items-center gap-2 px-6 py-3 bg-gray-700 hover:bg-gray-600 text-white font-medium rounded-lg transition-colors"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <GitHub className="w-5 h-5" />
-              View My GitHub Profile
-            </motion.a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
 
 
 const ProjectsSection = () => (
@@ -1140,7 +1089,6 @@ function App() {
           <HeroSection currentRoleIndex={currentRoleIndex} />
           <AboutSection />
           <SkillsSection />
-          <GitHubContributions />
           <ProjectsSection />
           <ContactSection />
           <Footer />
