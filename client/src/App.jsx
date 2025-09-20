@@ -6,6 +6,7 @@ import EMJHAY2 from "./assets/Emjhay2.jpg";
 import Comtech from "./assets/comtech.png";
 import Tic from "./assets/tic.png";
 import Hr4 from "./assets/hr4.jpg";
+import CV from "./assets/CV.pdf"; // Import your CV file
 import "./index.css";
 import {
   Email,
@@ -236,6 +237,12 @@ const ANIMATION_VARIANTS = {
   },
 };
 
+// Function to download CV
+const downloadCV = () => {
+  // Create a temporary anchor element
+  window.open(CV, '_blank', 'noopener,noreferrer');
+};
+
 // Components
 const NavItem = ({ item, variants, className = "" }) => (
   <motion.li variants={variants} className={className}>
@@ -377,7 +384,6 @@ const SocialIcons = () => (
 );
 
 const ActionButtons = () => {
-  const handleDownloadCV = () => console.log("Download CV clicked");
   const handleContactMe = () =>
     document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
 
@@ -388,7 +394,7 @@ const ActionButtons = () => {
     >
       <motion.button
         className="px-6 py-3 text-sm font-medium bg-white text-black rounded-lg hover:bg-gray-200 transition-colors flex items-center gap-2"
-        onClick={handleDownloadCV}
+        onClick={downloadCV}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
       >
